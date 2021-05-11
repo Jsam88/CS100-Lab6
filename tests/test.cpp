@@ -54,12 +54,12 @@ TEST(RectangleTest, PerimeterTest4){
 }
 
 TEST(ConstructorTest, DefaultConstructorWidth){
-	Rectangle* test = new Rectangle(0, 0);
+	Rectangle* test = new Rectangle();
 	EXPECT_EQ(test->get_width(), 0);
 }
 
 TEST(ConstructorTest, DefaultConstructorHeight){
-	Rectangle* test = new Rectangle(0, 0);
+	Rectangle* test = new Rectangle();
 	EXPECT_EQ(test->get_height(), 0);
 }
 
