@@ -6,18 +6,6 @@ int main(int argc, char **argv) {
   return RUN_ALL_TESTS();
 }
 
-TEST(RectangleTest, areaOnly){
-        Rectangle* rec = new Rectangle();
-        EXPECT_EQ(rec->area(), 0);
-        delete rec;
-}
-
-TEST(RectangleTest, PerimeterOnly){
-        Rectangle* rec = new Rectangle();
-        EXPECT_EQ(rec->perimeter(), 0);
-        delete rec;
-}
-
 TEST(RectangleTest, AreaTest1){
         Rectangle* rec = new Rectangle(1,5);
         EXPECT_EQ(rec->area(),5);
@@ -44,7 +32,7 @@ TEST(RectangleTest, AreaTest4){
 
 TEST(RectangleTest, PerimeterTest1){
         Rectangle* rec = new Rectangle(1,5);
-        EXPECT_EQ(rec->perimeter(),14);
+        EXPECT_EQ(rec->perimeter(),12);
         delete rec;
 }
 
@@ -63,4 +51,24 @@ TEST(RectangleTest, PerimeterTest4){
         Rectangle* rec = new Rectangle(6,1);
         EXPECT_EQ(rec->perimeter(),14);
         delete rec;
+}
+
+TEST(ConstructorTest, DefaultConstructorWidth){
+	Rectangle* test = new Rectangle(0, 0);
+	EXPECT_EQ(test->get_width(), 0);
+}
+
+TEST(ConstructorTest, DefaultConstructorHeight){
+	Rectangle* test = new Rectangle(0, 0);
+	EXPECT_EQ(test->get_height(), 0);
+}
+
+TEST(ConstructorTest, ParameterConstructorWidth){
+	Rectangle* test = new Rectangle(2, 3);
+	EXPECT_EQ(test->get_width(), 2);
+}
+
+TEST(ConstructorTest, ParameterConstructorHeight){
+	Rectangle* test = new Rectangle(2, 3);
+	EXPECT_EQ(test->get_height(), 3);
 }
