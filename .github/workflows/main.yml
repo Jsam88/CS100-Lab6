@@ -6,7 +6,8 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main, Jsam88/ci_setup, sdodd007/ci_setup ]
+    branches: [ main, Jsam88/passing_tests ]
+
   pull_request:
     branches: [ main ]
 
@@ -24,13 +25,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+              submodules: recursive
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Run cmake version
+        run: cmake --version
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Run all test suites
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cmake .
+          make
+          ./test
+      #echo Add other actions to build,
+      #echo test, and deploy your project.
